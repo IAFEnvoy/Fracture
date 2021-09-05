@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " fe",
+        "lsf",
+        "sl "
+    ],
+    "key": {
+        "e": {
+            "item": "eleworld:final"
+        },
+        "f": {
+            "item": "eleworld:fire_ele"
+        },
+        "s": {
+            "item": "eleworld:fire_stick"
+        },
+        "l": {
+            "item": "eleworld:fire_dragon_breath"
+        }
+    },
+    "result": {
+        "item": "fracture:nether_princess_arm"
+    }
+}

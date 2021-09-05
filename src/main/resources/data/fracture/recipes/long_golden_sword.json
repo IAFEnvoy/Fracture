@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " ii",
+        "gfi",
+        "gg "
+    ],
+    "key": {
+        "i": {
+            "item": "minecraft:gold_ingot"
+        },
+        "f": {
+            "item": "eleworld:final"
+        },
+        "g": {
+            "item": "minecraft:golden_sword"
+        }
+    },
+    "result": {
+        "item": "fracture:long_golden_sword"
+    }
+}

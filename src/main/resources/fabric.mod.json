@@ -1,0 +1,34 @@
+{
+    "schemaVersion": 1,
+    "id": "fracture",
+    "version": "1.0.0",
+
+    "name": "Fracture",
+    "description": "Add arms in Fracture (Rainimator's videos) to Minecraft.\nAdd mod \"Elemental World\" to use them in survival.",
+    "authors": [
+        "IAFEnvoy"
+    ],
+    "contact": {
+        "sources": ""
+    },
+
+    "license": "Mozilla",
+    "icon": "assets/fracture/icon.png",
+
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "fracture.fracture"
+        ]
+    },
+
+    "depends": {
+        "fabricloader": ">=0.11.3",
+        "fabric": "*",
+        "minecraft": "1.16.x",
+        "java": ">=8"
+    },
+    "suggests": {
+        "another-mod": "*"
+    }
+}

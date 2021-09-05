@@ -1,0 +1,10 @@
+{
+    "type": "crafting_shapeless",
+    "ingredients": [
+        { "item": "eleworld:fire_knief" },
+        { "item": "eleworld:ice_knief" }
+    ],
+    "result": {
+        "item": "fracture:ceris_knief"
+    }
+}
