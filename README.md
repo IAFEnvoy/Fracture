@@ -1,9 +1,11 @@
-# Fabric Example Mod
+#Fracture 破碎
 
-## Setup
+This mod add arms in Rainimator's Video.
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+我将Rainimator的视频里的武器加入了MC。
 
-## License
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+
+Support English and Chinese Simplified.
+
+支持英文和简体中文。

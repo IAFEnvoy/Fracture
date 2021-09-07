@@ -25,6 +25,12 @@ dependencies {
             
     //Fabric api
     modImplementation "net.fabricmc.fabric-api:fabric-api:0.31.0+1.16"
+
+	//trinkets
+	modImplementation "dev.emi:trinkets:2.6.7"
+
+	//caelus
+	modImplementation "top.theillusivec4.caelus:caelus-fabric:0.0.15"
 }
 processResources {
 	inputs.property "version", project.version
@@ -78,5 +84,16 @@ publishing {
 		// Notice: This block does NOT have the same function as the block in the top level.
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
+		maven {
+			name = "TerraformersMC"
+			url = "https://maven.terraformersmc.com/"
+		}
+		maven {
+			name = "Ladysnake_Libs"
+			url = "https://ladysnake.jfrog.io/artifactory/mods"
+		}
+		maven {
+        	url = "https://maven.theillusivec4.top"
+    	}
 	}
 }
