@@ -17,3 +17,5 @@ src="//player.bilibili.com/player.html?aid=250241853&bvid=BV1Av411P7Un&cid=39984
 https://www.youtube.com/watch?v=_FBifpZwbRc
 
 https://www.bilibili.com/video/BV1Av411P7Un
+
+<video src="https://www.youtube.com/watch?v=_FBifpZwbRc" controls="controls" width="500" height="300">您的浏览器不支持播放此视频</video>
