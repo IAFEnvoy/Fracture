@@ -12,4 +12,4 @@ Support English and Chinese Simplified.
 
 [![Watch the video](https://raw.github.com/IAFEnvoy/Fracture/videoicon.png)](https://www.bilibili.com/video/BV1Av411P7Un)
 
-<iframe src="//player.bilibili.com/player.html?aid=250241853&bvid=BV1Av411P7Un&cid=399841980&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+src="//player.bilibili.com/player.html?aid=250241853&bvid=BV1Av411P7Un&cid=399841980&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"
