@@ -8,14 +8,6 @@ Support English and Chinese Simplified.
 
 支持英文和简体中文。
 
-[![Watch the video](https://img.youtube.com/vi/_FBifpZwbRc/maxresdefault.jpg)](https://www.youtube.com/watch?v=_FBifpZwbRc)
+[![I add weapons in Rainimator's animations into Minecraft.](https://res.cloudinary.com/marcomontalbano/image/upload/v1631021859/video_to_markdown/images/youtube--_FBifpZwbRc-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=_FBifpZwbRc "I add weapons in Rainimator's animations into Minecraft.")
 
 [![Watch the video](https://raw.github.com/IAFEnvoy/Fracture/videoicon.png)](https://www.bilibili.com/video/BV1Av411P7Un)
-
-src="//player.bilibili.com/player.html?aid=250241853&bvid=BV1Av411P7Un&cid=399841980&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"
-
-https://www.youtube.com/watch?v=_FBifpZwbRc
-
-https://www.bilibili.com/video/BV1Av411P7Un
-
-<video src="https://www.youtube.com/watch?v=_FBifpZwbRc" controls="controls" width="1000" height="600">您的浏览器不支持播放此视频！</video>
