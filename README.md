@@ -18,4 +18,4 @@ https://www.youtube.com/watch?v=_FBifpZwbRc
 
 https://www.bilibili.com/video/BV1Av411P7Un
 
-<video src="https://www.youtube.com/watch?v=_FBifpZwbRc" controls="controls" width="500" height="300">您的浏览器不支持播放此视频</video>
+<video src="https://www.youtube.com/watch?v=_FBifpZwbRc" controls="controls" width="1000" height="600">您的浏览器不支持播放此视频！</video>
