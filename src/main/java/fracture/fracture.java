@@ -15,14 +15,16 @@ import fracture.wings.wings;
 
 public class fracture implements ModInitializer {
 	public static Logger LOGGER = LogManager.getLogger();
-	public static final String MOD_ID="fracture";
-	public static final String MOD_NAME="Fracture";
+	public static final String MOD_ID = "fracture";
+	public static final String MOD_NAME = "Fracture";
 
 	@Override
 	public void onInitialize() {
-            items.Init();
-			wings.Init();
+		log(Level.INFO, "Initializing");
+		items.Init();
+		wings.Init();
 	}
+
 	public static final ItemGroup _fracture = FabricItemGroupBuilder.create(new Identifier(MOD_ID, "fracture"))
 			.icon(() -> new ItemStack(items.ceris_big_knief)).appendItems(stacks -> {
 				stacks.add(new ItemStack(items.ceris_knief));
@@ -33,7 +35,9 @@ public class fracture implements ModInitializer {
 				stacks.add(new ItemStack(items.blackbone_arm));
 				stacks.add(new ItemStack(items.long_golden_sword));
 				stacks.add(new ItemStack(items.nether_princess_arm));
+				stacks.add(new ItemStack(wings.wings));
 			}).build();
+
 	public static void log(Level level, String message) {
 		LOGGER.log(level, "[" + MOD_NAME + "] " + message);
 	}
