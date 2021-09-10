@@ -1,86 +1,119 @@
 package fracture.wings.models;
 
-import fracture.mixins.DyeColourAccessor;
+import org.apache.logging.log4j.Level;
+
 import dev.emi.trinkets.api.TrinketsApi;
+import fracture.fracture;
+import fracture.wings.wings;
+import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.entity.PlayerModelPart;
+// import net.minecraft.client.render.entity.feature.ElytraFeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
-import fracture.fracture;
-import fracture.wings.WingItem;
-import fracture.wings.models.wingmodels.*;
+public class WingsFeatureRenderer<T extends LivingEntity, M extends EntityModel<T>> extends FeatureRenderer<T, M> {
+	private final ElytraWingModel<T> leftWing = new ElytraWingModel<>(false);
+	private final ElytraWingModel<T> rightWing = new ElytraWingModel<>(true);
+	private static final Identifier TEXTURE_DYEABLE_ELYTRA = new Identifier("minecraft",
+			"textures/entity/elytra.png");
 
-public class WingsFeatureRenderer<T extends LivingEntity, M extends EntityModel<T>> extends FeatureRenderer<T, M>
-{
-	private WingEntityModel<T> wingModel = new WingEntityModel<>();
-
-	public WingsFeatureRenderer(FeatureRendererContext<T, M> context)
-	{
+	public WingsFeatureRenderer(FeatureRendererContext<T, M> context) {
 		super(context);
 	}
 
 	@Override
-	public void render(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, T entity, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch)
-	{
-		if(entity instanceof PlayerEntity)
-		{
-			ItemStack stack = TrinketsApi.getTrinketComponent((PlayerEntity) entity).getStack("chest", "cape");
-
-			if(stack.getItem() instanceof WingItem)
-			{
-				WingItem wingItem = (WingItem) stack.getItem();
-				int primaryColour = ((DyeColourAccessor) (Object) wingItem.getPrimaryColour()).getColour();
-				int secondaryColour = ((DyeColourAccessor) (Object) wingItem.getSecondaryColour()).getColour();
-				float r1 = (float) (primaryColour >> 16 & 255) / 255F;
-				float g1 = (float) (primaryColour >> 8 & 255) / 255F;
-				float b1 = (float) (primaryColour & 255) / 255F;
-				float r2 = (float) (secondaryColour >> 16 & 255) / 255F;
-				float g2 = (float) (secondaryColour >> 8 & 255) / 255F;
-				float b2 = (float) (secondaryColour & 255) / 255F;
-
-				String wingType = wingItem.getWingType() != WingItem.WingType.UNIQUE ? wingItem.getWingType().toString().toLowerCase() : Registry.ITEM.getId(wingItem).getPath().replaceAll("_wings", "");
-
-				if(wingItem.getWingType() == WingItem.WingType.FEATHERED || wingItem.getWingType() == WingItem.WingType.MECHANICAL_FEATHERED)
-					wingModel = new FeatheredWingModel<>();
-				if(wingItem.getWingType() == WingItem.WingType.DRAGON || wingItem.getWingType() == WingItem.WingType.MECHANICAL_LEATHER)
-					wingModel = new LeatherWingModel<>();
-				if(wingItem.getWingType() == WingItem.WingType.LIGHT)
-					wingModel = new LightWingsModel<>();
-				if(wingType.equals("flandres"))
-					wingModel = new FlandresWingsModel<>();
-				if(wingType.equals("discords"))
-					wingModel = new DiscordsWingsModel<>();
-				if(wingType.equals("zanzas"))
-					wingModel = new ZanzasWingsModel<>();
-				
-				Identifier layer1 = new Identifier(fracture.MOD_ID, "textures/entity/" + wingType + "_wings.png");
-				Identifier layer2 = new Identifier(fracture.MOD_ID, "textures/entity/" + wingType + "_wings_2.png");
-
-				matrices.push();
-				matrices.translate(0.0D, 0.0D, 0.125D);
-				this.getContextModel().copyStateTo(this.wingModel);
-				this.wingModel.setAngles(entity, limbAngle, limbDistance, animationProgress, headYaw, headPitch);
-				this.renderWings(matrices, vertexConsumers, stack, layer2, light, r2, g2, b2);
-				this.renderWings(matrices, vertexConsumers, stack, layer1, light, r1, g1, b1);
-				matrices.pop();
-			}
+	public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, T livingEntity,
+			float f, float g, float h, float j, float k, float l) {
+		ItemStack elytra = tryFindElytra(livingEntity);
+		if (elytra != ItemStack.EMPTY) {
+			matrixStack.push();
+			matrixStack.translate(0.0D, 0.0D, 0.125D);
+			renderSplit(matrixStack, vertexConsumerProvider, i, livingEntity, f, g, h, j, k, l, elytra);
+			matrixStack.pop();
 		}
 	}
 
-	public void renderWings(MatrixStack matrices, VertexConsumerProvider vertexConsumers, ItemStack stack, Identifier layerName, int light, float r, float g, float b)
-	{
-		VertexConsumer vertexConsumer = ItemRenderer.getArmorGlintConsumer(vertexConsumers, RenderLayer.getEntityTranslucent(layerName), false, stack.hasGlint());
-		this.wingModel.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, r, g, b, 1.0F);
+	public Identifier getElytraTexture(ItemStack stack, T entity) {
+		return TEXTURE_DYEABLE_ELYTRA;
+	}
+
+	public void renderSplit(MatrixStack matrixStackIn, VertexConsumerProvider vertexConsumerProvider, int i,
+			T livingEntity, float f, float g, float h, float j, float k, float l, ItemStack elytra) {
+		renderSplitFallback(matrixStackIn, vertexConsumerProvider, i, livingEntity, f, g, h, j, k, l, elytra, leftWing);
+		renderSplitFallback(matrixStackIn, vertexConsumerProvider, i, livingEntity, f, g, h, j, k, l, elytra, rightWing);
+	}
+
+	public void renderSplitFallback(MatrixStack matrixStackIn, VertexConsumerProvider vertexConsumerProvider, int i,
+			T livingEntity, float f, float g, float h, float j, float k, float l, ItemStack elytra,
+			ElytraWingModel<T> wingIn) {
+		Identifier elytraTexture;
+		if (livingEntity instanceof AbstractClientPlayerEntity) {
+			AbstractClientPlayerEntity abstractclientplayerentity = (AbstractClientPlayerEntity) livingEntity;
+			if (abstractclientplayerentity.canRenderElytraTexture()
+					&& abstractclientplayerentity.getElytraTexture() != null) {
+				elytraTexture = abstractclientplayerentity.getElytraTexture();
+			} else if (abstractclientplayerentity.canRenderCapeTexture()
+					&& abstractclientplayerentity.getCapeTexture() != null
+					&& abstractclientplayerentity.isPartVisible(PlayerModelPart.CAPE)) {
+				elytraTexture = abstractclientplayerentity.getCapeTexture();
+			} else {
+				elytraTexture = getElytraTexture(elytra, livingEntity);
+			}
+		} else {
+			elytraTexture = getElytraTexture(elytra, livingEntity);
+		}
+		this.getContextModel().copyStateTo(wingIn);
+        wingIn.setAngles(livingEntity, f, g, j, k, l);
+        VertexConsumer glintConsumer = ItemRenderer.getArmorGlintConsumer(vertexConsumerProvider, RenderLayer.getArmorCutoutNoCull(elytraTexture), false, elytra.hasGlint());
+        wingIn.render(matrixStackIn, glintConsumer, i, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F);
+	}
+
+	public ItemStack getColytraSubItem(ItemStack stack)
+    {
+        NbtCompound colytraChestTag = stack.getSubTag("colytra:ElytraUpgrade");
+        if (colytraChestTag != null)
+        {
+            ItemStack elytraStack = ItemStack.fromNbt(colytraChestTag);
+            if (elytraStack.getItem() == wings.wings)
+            {
+                return elytraStack;
+            }
+        }
+        return ItemStack.EMPTY;
+    }
+	public boolean shouldRender(ItemStack stack, LivingEntity entity)
+    {
+        return stack.getItem() == wings.wings;
+    }
+	public ItemStack tryFindElytra(LivingEntity entity) {
+		ItemStack elytra = entity.getEquippedStack(EquipmentSlot.CHEST);
+        // if (shouldRender(elytra, entity))
+        // {
+        //     return elytra;
+        // }
+		// elytra = getColytraSubItem(elytra);
+		if (FabricLoader.getInstance().isModLoaded("trinkets")&&entity instanceof PlayerEntity) 
+            elytra = TrinketsApi.getTrinketComponent((PlayerEntity) entity).getStack("chest", "cape");
+		if (elytra == new ItemStack(wings.wings))
+		{
+			fracture.log(Level.INFO, "Detected!");
+			return elytra;
+		}
+		fracture.log(Level.INFO, " Failed to Detect!");
+        return ItemStack.EMPTY;
 	}
 }

@@ -2,7 +2,6 @@ package fracture;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.fabricmc.fabric.api.network.ServerSidePacketRegistry;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
@@ -21,8 +20,8 @@ public class fracture implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-                items.Init();
-                wings.Init();
+            items.Init();
+			wings.Init();
 	}
 	public static final ItemGroup _fracture = FabricItemGroupBuilder.create(new Identifier(MOD_ID, "fracture"))
 			.icon(() -> new ItemStack(items.ceris_big_knief)).appendItems(stacks -> {

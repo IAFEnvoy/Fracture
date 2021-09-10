@@ -10,6 +10,8 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.DyeableItem;
+import net.minecraft.item.ElytraItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tag.Tag;
@@ -24,7 +26,7 @@ import java.util.UUID;
 
 import fracture.fracture;
 
-public class WingItem extends TrinketItem
+public class WingItem extends ElytraItem implements DyeableItem
 {
 	public static boolean armourSlows = true;
 	public static float maxSlowedMultiplier = 3F;
@@ -84,47 +86,47 @@ public class WingItem extends TrinketItem
 		this.wingType = wingType;
 	}
 
-	@Override
-	public void tick(PlayerEntity player, ItemStack stack)
-	{
-		if(player.getHungerManager().getFoodLevel() <= 6)
-			return;
+	// @Override
+	// public void tick(PlayerEntity player, ItemStack stack)
+	// {
+	// 	if(player.getHungerManager().getFoodLevel() <= 6)
+	// 		return;
 
-		if(player.isFallFlying())
-		{
-			if(player.forwardSpeed > 0)
-				applySpeed(player);
+	// 	if(player.isFallFlying())
+	// 	{
+	// 		if(player.forwardSpeed > 0)
+	// 			applySpeed(player);
 
-			if(player.isSneaking())
-				stopFlying(player);
+	// 		if(player.isSneaking())
+	// 			stopFlying(player);
 
-			if(player.getPos().y > player.world.getHeight() + 64 && player.age % 20 == 0 && MELTS.contains(this))
-				stack.damage(1, player, (p) -> p.sendEquipmentBreakStatus(EquipmentSlot.CHEST));
-		}
-		else
-		{
-			if(player.isOnGround() || player.isTouchingWater())
-				shouldSlowfall = false;
+	// 		if(player.getPos().y > player.world.getHeight() + 64 && player.age % 20 == 0 && MELTS.contains(this))
+	// 			stack.damage(1, player, (p) -> p.sendEquipmentBreakStatus(EquipmentSlot.CHEST));
+	// 	}
+	// 	else
+	// 	{
+	// 		if(player.isOnGround() || player.isTouchingWater())
+	// 			shouldSlowfall = false;
 
-			if(shouldSlowfall)
-			{
-				player.fallDistance = 0F;
-				player.setVelocity(player.getVelocity().x, -0.4, player.getVelocity().z);
-			}
-		}
-	}
+	// 		if(shouldSlowfall)
+	// 		{
+	// 			player.fallDistance = 0F;
+	// 			player.setVelocity(player.getVelocity().x, -0.4, player.getVelocity().z);
+	// 		}
+	// 	}
+	// }
 
-	@Override
-	public boolean canWearInSlot(String group, String slot)
-	{
-		return group.equals(SlotGroups.CHEST) && slot.equals(Slots.CAPE);
-	}
+	// @Override
+	// public boolean canWearInSlot(String group, String slot)
+	// {
+	// 	return group.equals(SlotGroups.CHEST) && slot.equals(Slots.CAPE);
+	// }
 
-	@Override
-	public Multimap<EntityAttribute, EntityAttributeModifier> getTrinketModifiers(String group, String slot, UUID uuid, ItemStack stack)
-	{
-		return this.attributeModifiers;
-	}
+	// @Override
+	// public Multimap<EntityAttribute, EntityAttributeModifier> getTrinketModifiers(String group, String slot, UUID uuid, ItemStack stack)
+	// {
+	// 	return this.attributeModifiers;
+	// }
 
 	public DyeColor getPrimaryColour()
 	{
@@ -166,4 +168,19 @@ public class WingItem extends TrinketItem
 	{
 		FEATHERED, DRAGON, MECHANICAL_FEATHERED, MECHANICAL_LEATHER, LIGHT, UNIQUE
 	}
+	@Override
+    public int getColor(ItemStack stack)
+    {
+        // CompoundTag compoundTag = stack.getSubTag("display");
+        // if (compoundTag != null)
+        // {
+        //     return compoundTag.contains("color", 99) ? compoundTag.getInt("color") : 16777215;
+        // }
+        // compoundTag = stack.getSubTag("BlockEntityTag");
+        // if (compoundTag != null)
+        // {
+        //     return DyeColor.byId(compoundTag.getInt("Base")).getMaterialColor().color;
+        // }
+        return 16777215;
+    }
 }
