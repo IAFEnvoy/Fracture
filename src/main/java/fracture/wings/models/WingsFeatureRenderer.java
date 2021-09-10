@@ -1,9 +1,6 @@
 package fracture.wings.models;
 
-import org.apache.logging.log4j.Level;
-
 import dev.emi.trinkets.api.TrinketsApi;
-import fracture.fracture;
 import fracture.wings.wings;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
@@ -12,7 +9,6 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.PlayerModelPart;
-// import net.minecraft.client.render.entity.feature.ElytraFeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.render.entity.model.EntityModel;
@@ -28,8 +24,7 @@ import net.minecraft.util.Identifier;
 public class WingsFeatureRenderer<T extends LivingEntity, M extends EntityModel<T>> extends FeatureRenderer<T, M> {
 	private final ElytraWingModel<T> leftWing = new ElytraWingModel<>(false);
 	private final ElytraWingModel<T> rightWing = new ElytraWingModel<>(true);
-	private static final Identifier TEXTURE_DYEABLE_ELYTRA = new Identifier("minecraft",
-			"textures/entity/elytra.png");
+	private static final Identifier TEXTURE_DYEABLE_ELYTRA = new Identifier("fracture", "textures/entity/wings.png");
 
 	public WingsFeatureRenderer(FeatureRendererContext<T, M> context) {
 		super(context);
@@ -54,7 +49,8 @@ public class WingsFeatureRenderer<T extends LivingEntity, M extends EntityModel<
 	public void renderSplit(MatrixStack matrixStackIn, VertexConsumerProvider vertexConsumerProvider, int i,
 			T livingEntity, float f, float g, float h, float j, float k, float l, ItemStack elytra) {
 		renderSplitFallback(matrixStackIn, vertexConsumerProvider, i, livingEntity, f, g, h, j, k, l, elytra, leftWing);
-		renderSplitFallback(matrixStackIn, vertexConsumerProvider, i, livingEntity, f, g, h, j, k, l, elytra, rightWing);
+		renderSplitFallback(matrixStackIn, vertexConsumerProvider, i, livingEntity, f, g, h, j, k, l, elytra,
+				rightWing);
 	}
 
 	public void renderSplitFallback(MatrixStack matrixStackIn, VertexConsumerProvider vertexConsumerProvider, int i,
@@ -77,43 +73,35 @@ public class WingsFeatureRenderer<T extends LivingEntity, M extends EntityModel<
 			elytraTexture = getElytraTexture(elytra, livingEntity);
 		}
 		this.getContextModel().copyStateTo(wingIn);
-        wingIn.setAngles(livingEntity, f, g, j, k, l);
-        VertexConsumer glintConsumer = ItemRenderer.getArmorGlintConsumer(vertexConsumerProvider, RenderLayer.getArmorCutoutNoCull(elytraTexture), false, elytra.hasGlint());
-        wingIn.render(matrixStackIn, glintConsumer, i, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F);
+		wingIn.setAngles(livingEntity, f, g, j, k, l);
+		VertexConsumer glintConsumer = ItemRenderer.getArmorGlintConsumer(vertexConsumerProvider,
+				RenderLayer.getArmorCutoutNoCull(elytraTexture), false, elytra.hasGlint());
+		wingIn.render(matrixStackIn, glintConsumer, i, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F);
 	}
 
-	public ItemStack getColytraSubItem(ItemStack stack)
-    {
-        NbtCompound colytraChestTag = stack.getSubTag("colytra:ElytraUpgrade");
-        if (colytraChestTag != null)
-        {
-            ItemStack elytraStack = ItemStack.fromNbt(colytraChestTag);
-            if (elytraStack.getItem() == wings.wings)
-            {
-                return elytraStack;
-            }
-        }
-        return ItemStack.EMPTY;
-    }
-	public boolean shouldRender(ItemStack stack, LivingEntity entity)
-    {
-        return stack.getItem() == wings.wings;
-    }
+	public ItemStack getColytraSubItem(ItemStack stack) {
+		NbtCompound colytraChestTag = stack.getSubTag("colytra:ElytraUpgrade");
+		if (colytraChestTag != null) {
+			ItemStack elytraStack = ItemStack.fromNbt(colytraChestTag);
+			if (elytraStack.getItem() == wings.wings) {
+				return elytraStack;
+			}
+		}
+		return ItemStack.EMPTY;
+	}
+
 	public ItemStack tryFindElytra(LivingEntity entity) {
 		ItemStack elytra = entity.getEquippedStack(EquipmentSlot.CHEST);
-        // if (shouldRender(elytra, entity))
-        // {
-        //     return elytra;
-        // }
-		// elytra = getColytraSubItem(elytra);
-		if (FabricLoader.getInstance().isModLoaded("trinkets")&&entity instanceof PlayerEntity) 
-            elytra = TrinketsApi.getTrinketComponent((PlayerEntity) entity).getStack("chest", "cape");
-		if (elytra == new ItemStack(wings.wings))
-		{
-			fracture.log(Level.INFO, "Detected!");
+		elytra = getColytraSubItem(elytra);
+		if (elytra != ItemStack.EMPTY) {
 			return elytra;
 		}
-		fracture.log(Level.INFO, " Failed to Detect!");
-        return ItemStack.EMPTY;
+		if (FabricLoader.getInstance().isModLoaded("trinkets") && entity instanceof PlayerEntity) {
+			elytra = TrinketsApi.getTrinketComponent((PlayerEntity) entity).getStack("chest", "cape");
+		}
+		if (elytra.getItem() == wings.wings) {
+			return elytra;
+		}
+		return ItemStack.EMPTY;
 	}
 }

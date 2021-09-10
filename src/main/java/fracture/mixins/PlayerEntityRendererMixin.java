@@ -19,10 +19,9 @@ public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer<Abs
     {
         super(dispatcher, model, shadowRadius);
     }
-
-    // @Inject(at=@At("RETURN"), method= "<init>(Lnet/minecraft/client/render/entity/EntityRenderDispatcher;Z)V")
+    
     @Inject(method = "<init>(Lnet/minecraft/client/render/entity/EntityRenderDispatcher;Z)V", at = @At(value = "INVOKE", shift = At.Shift.AFTER, target = "net/minecraft/client/render/entity/PlayerEntityRenderer.addFeature(Lnet/minecraft/client/render/entity/feature/FeatureRenderer;)Z", ordinal = 6))
-    private void postConstructor(CallbackInfo callbackInfo)
+    public void postConstructor(CallbackInfo callbackInfo)
     {
         this.addFeature(new WingsFeatureRenderer<>(this));
     }

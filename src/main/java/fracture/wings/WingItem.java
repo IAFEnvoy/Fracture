@@ -2,11 +2,7 @@ package fracture.wings;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import dev.emi.trinkets.api.SlotGroups;
-import dev.emi.trinkets.api.Slots;
-import dev.emi.trinkets.api.TrinketItem;
 import net.fabricmc.fabric.api.tag.TagRegistry;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.player.PlayerEntity;
@@ -43,7 +39,6 @@ public class WingItem extends ElytraItem implements DyeableItem
 	private WingType wingType;
 	private boolean shouldSlowfall;
 	private static final Tag<Item> FREE_FLIGHT = TagRegistry.item(new Identifier(fracture.MOD_ID, "free_flight"));
-	private static final Tag<Item> MELTS = TagRegistry.item(new Identifier(fracture.MOD_ID, "melts"));
 	/**
 	 * The speed the wings allow the player to travel at. Default: 0.05D.
 	 */

@@ -17,10 +17,16 @@
 
     "environment": "*",
     "entrypoints": {
+        "client": [
+            "fracture.wings.Client.InitClient"
+        ],
         "main": [
             "fracture.fracture"
         ]
     },
+    "mixins": [
+        "fracture.mixins.json"
+    ],
 
     "depends": {
         "fabricloader": ">=0.11.3",
