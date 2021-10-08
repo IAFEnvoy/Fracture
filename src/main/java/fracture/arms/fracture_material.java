@@ -1,5 +1,7 @@
 package fracture.arms;
 
+import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 
@@ -34,7 +36,7 @@ public class fracture_material implements ToolMaterial{
 
 	@Override
 	public Ingredient getRepairIngredient() {
-		return null;
+		return Ingredient.ofItems(Items.NETHERITE_INGOT);
 	}
     
 }

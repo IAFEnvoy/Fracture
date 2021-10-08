@@ -11,7 +11,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import fracture.items.items;
-import fracture.wings.wings;
 
 public class fracture implements ModInitializer {
 	public static Logger LOGGER = LogManager.getLogger();
@@ -22,7 +21,6 @@ public class fracture implements ModInitializer {
 	public void onInitialize() {
 		log(Level.INFO, "Initializing");
 		items.Init();
-		wings.Init();
 	}
 
 	public static final ItemGroup _fracture = FabricItemGroupBuilder.create(new Identifier(MOD_ID, "fracture"))
@@ -35,7 +33,6 @@ public class fracture implements ModInitializer {
 				stacks.add(new ItemStack(items.blackbone_arm));
 				stacks.add(new ItemStack(items.long_golden_sword));
 				stacks.add(new ItemStack(items.nether_princess_arm));
-				stacks.add(new ItemStack(wings.wings));
 			}).build();
 
 	public static void log(Level level, String message) {

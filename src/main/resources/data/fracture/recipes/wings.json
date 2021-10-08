@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "wew",
+        "wlw",
+        "w w"
+    ],
+    "key": {
+        "e": {
+            "item": "eleworld:final"
+        },
+        "l": {
+            "item": "minecraft:elytra"
+        },
+        "w": {
+            "item": "eleworld:water_ele"
+        }
+    },
+    "result": {
+        "item": "fracture:wings"
+    }
+}
