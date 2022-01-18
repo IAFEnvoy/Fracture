@@ -1,8 +1,5 @@
 package fracture.items;
 
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolItem;
@@ -11,7 +8,7 @@ import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 import fracture.arms.BoomerangAction;
 import fracture.arms.fracture_material;
-import fracture.arms.wing_material;
+import fracture.wings.wings;
 import fracture.fracture;
 
 public class items {
@@ -33,9 +30,6 @@ public class items {
   public static ToolItem ciara_boomerang = new BoomerangAction(fracture_material.INSTANCE, 6, -2.4F,
       new Item.Settings().group(fracture._fracture).rarity(Rarity.RARE));
 
-  public static final ArmorMaterial wing_m = new wing_material();
-  public static final Item wings = new ArmorItem(wing_m, EquipmentSlot.HEAD,
-      new Item.Settings());
 
   public static void Init() {
     Registry.register(Registry.ITEM, new Identifier(fracture.MOD_ID, "ceris_knief"), ceris_knief);
@@ -46,6 +40,6 @@ public class items {
     Registry.register(Registry.ITEM, new Identifier(fracture.MOD_ID, "blackbone_arm"), blackbone_arm);
     Registry.register(Registry.ITEM, new Identifier(fracture.MOD_ID, "long_golden_sword"), long_golden_sword);
     Registry.register(Registry.ITEM, new Identifier(fracture.MOD_ID, "nether_princess_arm"), nether_princess_arm);
-    Registry.register(Registry.ITEM, new Identifier(fracture.MOD_ID, "wings"), wings);
+    wings.Init();
   }
 }

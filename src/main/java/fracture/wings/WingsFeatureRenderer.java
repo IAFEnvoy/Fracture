@@ -1,7 +1,6 @@
 package fracture.wings;
 
 import fracture.fracture;
-import fracture.items.items;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
@@ -28,7 +27,7 @@ public class WingsFeatureRenderer<T extends LivingEntity, M extends EntityModel<
   public void render(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, T entity, float limbAngle,
       float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
     if (entity instanceof PlayerEntity) {
-      if (entity.getEquippedStack(EquipmentSlot.CHEST).getItem() == items.wings) {
+      if (entity.getEquippedStack(EquipmentSlot.CHEST).getItem() == wings.tech_wing) {
         renderTexture(matrices, vertexConsumers,
             light, entity, limbAngle, limbDistance, tickDelta, animationProgress, headYaw, headPitch);
 
@@ -63,8 +62,8 @@ public class WingsFeatureRenderer<T extends LivingEntity, M extends EntityModel<
     VertexConsumer vertexConsumer = ItemRenderer.getArmorGlintConsumer(vertexConsumers,
         RenderLayer.getEntityTranslucent(layerName), false, false);
     if (left)
-      this.lwingModel.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 0, 0, 0, 0);
+      this.lwingModel.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
     else
-      this.rwingModel.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 0, 0, 0, 0);
+      this.rwingModel.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
   }
 }
