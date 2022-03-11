@@ -1,6 +1,9 @@
-package fracture.wings;
+package net.iafenvoy.fracture.Items.Wings;
 
-import fracture.fracture;
+import net.iafenvoy.fracture.Fracture;
+import net.iafenvoy.fracture.Items.Wings.Models.TechWingsModel;
+import net.iafenvoy.fracture.Items.Wings.Models.WingEntityModel;
+import net.iafenvoy.fracture.Registry.Items;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
@@ -27,7 +30,7 @@ public class WingsFeatureRenderer<T extends LivingEntity, M extends EntityModel<
   public void render(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, T entity, float limbAngle,
       float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
     if (entity instanceof PlayerEntity) {
-      if (entity.getEquippedStack(EquipmentSlot.CHEST).getItem() == wings.tech_wing) {
+      if (entity.getEquippedStack(EquipmentSlot.CHEST).getItem() == Items.tech_wing) {
         renderTexture(matrices, vertexConsumers,
             light, entity, limbAngle, limbDistance, tickDelta, animationProgress, headYaw, headPitch);
 
@@ -40,7 +43,7 @@ public class WingsFeatureRenderer<T extends LivingEntity, M extends EntityModel<
     lwingModel = new TechWingsModel<>(true);
     rwingModel = new TechWingsModel<>(false);
 
-    Identifier layer1 = new Identifier(fracture.MOD_ID, "textures/wing/tech_wings.png");
+    Identifier layer1 = new Identifier(Fracture.MOD_ID, "textures/wing/tech_wings.png");
 
     matrices.push();
     matrices.translate(0.0D, 0.0D, 0.125D);

@@ -1,4 +1,4 @@
-package fracture.wings.WingsAPI;
+package net.iafenvoy.fracture.Items.Wings;
 
 public class WingConfig {
     public static boolean armourSlows = true;

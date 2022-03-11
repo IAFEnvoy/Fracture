@@ -1,4 +1,4 @@
-package fracture.wings;
+package net.iafenvoy.fracture.Items.Wings.Models;
 
 import com.google.common.collect.ImmutableList;
 

@@ -18,7 +18,7 @@
     "environment": "*",
     "entrypoints": {
         "main": [
-            "fracture.fracture"
+            "net.iafenvoy.fracture.Fracture"
         ]
     },
     "mixins": [

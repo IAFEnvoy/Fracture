@@ -1,8 +1,9 @@
-package fracture.arms;
+package net.iafenvoy.fracture.Items.Weapons.Special;
 
+import net.iafenvoy.fracture.Items.Weapons.WeaponItems;
+import net.iafenvoy.fracture.Utils.Enum.Teams;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
@@ -12,15 +13,15 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-public class BoomerangAction extends SwordItem {
-
-    public BoomerangAction(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+public class BoomerangAction extends WeaponItems {
+    public BoomerangAction(String name, ToolMaterial toolMaterial, int attackDamage, float attackSpeed,
+            Settings settings, Teams team) {
+        super(name, toolMaterial, attackDamage, attackSpeed, settings, team);
     }
+
     @Override
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity playerEntity, Hand hand)
-    {
-        if (playerEntity.isSneaking()) {//按住Shift才会使用传送
+    public TypedActionResult<ItemStack> use(World world, PlayerEntity playerEntity, Hand hand) {
+        if (playerEntity.isSneaking()) {// 按住Shift才会使用传送
             Double distance = 30.0d;
             double yaw = (double) playerEntity.headYaw;
             double pitch = (double) playerEntity.pitch;
@@ -117,11 +118,12 @@ public class BoomerangAction extends SwordItem {
             } else {
                 return new TypedActionResult<>(ActionResult.FAIL, playerEntity.getStackInHand(hand));
             }
-        }else {
+        } else {
             return new TypedActionResult<>(ActionResult.FAIL, playerEntity.getStackInHand(hand));
         }
         return new TypedActionResult<>(ActionResult.SUCCESS, playerEntity.getStackInHand(hand));
     }
+
     protected boolean checkBlocks(World world, BlockPos pos) {
         if (world.getBlockState(pos.down()).getMaterial().blocksMovement()
                 && !world.getBlockState(pos).getMaterial().blocksMovement()

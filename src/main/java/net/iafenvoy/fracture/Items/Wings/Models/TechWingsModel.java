@@ -1,4 +1,4 @@
-package fracture.wings;
+package net.iafenvoy.fracture.Items.Wings.Models;
 
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.entity.LivingEntity;
