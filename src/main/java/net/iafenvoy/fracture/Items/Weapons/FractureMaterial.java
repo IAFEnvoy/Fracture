@@ -5,7 +5,7 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 
 public class FractureMaterial implements ToolMaterial {
-	public static FractureMaterial INSTANCE=new FractureMaterial(0,2000,30,ItemStack.EMPTY);
+	public static final FractureMaterial INSTANCE=new FractureMaterial(0,2000,30,ItemStack.EMPTY);
 	private float attackDamage;
 	private int durability;
 	private int enchantability;

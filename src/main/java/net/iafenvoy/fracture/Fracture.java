@@ -4,6 +4,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.iafenvoy.fracture.Registry.Items;
 import net.iafenvoy.fracture.Registry.Networking;
+import net.iafenvoy.fracture.Registry.Recipe;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
@@ -20,7 +21,9 @@ public class Fracture implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		log(Level.INFO, "Initializing");
+    Items.Init();
 		Networking.Init();
+    Recipe.Init();
 	}
 
 	public static final ItemGroup _fracture = FabricItemGroupBuilder.create(new Identifier(MOD_ID, "fracture"))
@@ -29,7 +32,7 @@ public class Fracture implements ModInitializer {
 				stacks.add(new ItemStack(Items.patrick_halberd));
 				stacks.add(new ItemStack(Items.dancer_arm));
 				stacks.add(new ItemStack(Items.ceris_big_knief));
-				stacks.add(new ItemStack(Items.ciara_boomerang));
+				stacks.add(new ItemStack(Items.ciara_karambit));
 				stacks.add(new ItemStack(Items.blackbone_arm));
 				stacks.add(new ItemStack(Items.long_golden_sword));
 				stacks.add(new ItemStack(Items.nether_princess_arm));

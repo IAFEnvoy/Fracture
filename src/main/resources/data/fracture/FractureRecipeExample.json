@@ -1,0 +1,25 @@
+{
+    "type": "fracture:nine_nine_recipe",
+    "map": [
+        "*********",
+        "*       *",
+        "*       *",
+        "*       *",
+        "*   X   *",
+        "*       *",
+        "*       *",
+        "*       *",
+        "*********"
+    ],
+    "keys": [{
+            "name": "*",
+            "item": "minecraft:stone"
+        },
+        {
+            "name": "X",
+            "item": "minecraft:diamond_block"
+        }
+    ],
+    "output": "minecraft:stone",
+    "count": 1
+}

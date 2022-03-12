@@ -13,8 +13,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-public class BoomerangAction extends WeaponItems {
-    public BoomerangAction(String name, ToolMaterial toolMaterial, int attackDamage, float attackSpeed,
+public class KarambitItem extends WeaponItems {
+    public KarambitItem(String name, ToolMaterial toolMaterial, int attackDamage, float attackSpeed,
             Settings settings, Teams team) {
         super(name, toolMaterial, attackDamage, attackSpeed, settings, team);
     }
