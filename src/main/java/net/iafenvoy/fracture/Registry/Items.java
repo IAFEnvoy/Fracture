@@ -8,12 +8,9 @@ import net.iafenvoy.fracture.Items.Weapons.WeaponItems;
 import net.iafenvoy.fracture.Items.Weapons.Special.KarambitItem;
 import net.iafenvoy.fracture.Items.Wings.WingItems;
 import net.iafenvoy.fracture.Recipe.FractureCraftingTableBlock;
-import net.iafenvoy.fracture.Recipe.FractureCraftingTableEntity;
 import net.iafenvoy.fracture.Utils.Enum.Teams;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
-import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.block.entity.BlockEntityType.Builder;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item.Settings;
 import net.minecraft.item.BlockItem;
@@ -50,9 +47,6 @@ public class Items {
           FabricBlockSettings.of(Material.METAL).hardness(5.0f).breakByTool(FabricToolTags.PICKAXES, 3)));
   public static final Item CRAFTING_TABLE_ITEM = Registry.register(Registry.ITEM, "fracture:crafting_table",
       new BlockItem(CRAFTING_TABLE, new Settings().fireproof().rarity(Rarity.EPIC)));
-  public static final BlockEntityType<FractureCraftingTableEntity> CRAFTING_TABLE_ENTITY = Registry.register(
-      Registry.BLOCK_ENTITY_TYPE, "fracture:craftingtable",
-      Builder.create(FractureCraftingTableEntity::new, new Block[] { CRAFTING_TABLE }).build(null));
 
   public static void Init() {
   }

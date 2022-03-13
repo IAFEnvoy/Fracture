@@ -1,15 +1,15 @@
 {
     "type": "fracture:nine_nine_recipe",
     "map": [
-        "*********",
-        "*       *",
-        "*       *",
-        "*       *",
-        "*   X   *",
-        "*       *",
-        "*       *",
-        "*       *",
-        "*********"
+        "         ",
+        "         ",
+        "         ",
+        "   ***   ",
+        "   *X*   ",
+        "   ***   ",
+        "         ",
+        "         ",
+        "         "
     ],
     "keys": [{
             "name": "*",
@@ -20,6 +20,6 @@
             "item": "minecraft:diamond_block"
         }
     ],
-    "output": "minecraft:stone",
+    "output": "minecraft:diamond_block",
     "count": 1
 }

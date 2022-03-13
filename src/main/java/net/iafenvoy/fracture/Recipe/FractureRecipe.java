@@ -1,75 +1,51 @@
 package net.iafenvoy.fracture.Recipe;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.Recipe;
-import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.RecipeType;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.World;
 
-public class FractureRecipe implements Recipe<FractureCraftingInventory> {
-  private final Ingredient[][] inputs;
-  private final ItemStack output;
+public class FractureRecipe {
+  private static final List<FractureRecipe> INSTANCE = new ArrayList<FractureRecipe>();
+  public static final FractureRecipe EMPTY = new FractureRecipe(null, null, null);
   private final Identifier id;
+  private final Block[][] input;
+  private final ItemStack output;
 
-  public FractureRecipe(Identifier id, Ingredient[][] inputs, ItemStack output) {
+  public FractureRecipe(Identifier id, Block[][] input, ItemStack output) {
     this.id = id;
-    this.inputs = inputs;
+    this.input = input;
     this.output = output;
+    INSTANCE.add(this);
   }
 
-  public Ingredient getInput(int line, int column) {
-    if (line >= 0 && line < this.inputs.length && column >= 0 && column < this.inputs[line].length)
-      return this.inputs[line][column];
-    else
-      return Ingredient.EMPTY;
+  public boolean matches(Block[][] input) {
+    if (this == EMPTY)
+      return false;
+    for (int i = 0; i < 9; i++)
+      for (int j = 0; j < 9; j++) {
+        if (i == 4 && j == 4)
+          continue;// middle block is not checked
+        if (input[i][j] != this.input[i][j])
+          return false;
+      }
+    return true;
   }
 
-  @Override
-  public ItemStack craft(FractureCraftingInventory inventory) {
-    return ItemStack.EMPTY;
-  }
-
-  @Override
-  public boolean fits(int arg0, int arg1) {
-    return false;
-  }
-
-  @Override
-  public Identifier getId() {
-    return id;
-  }
-
-  @Override
   public ItemStack getOutput() {
     return output;
   }
 
-  @Override
-  public RecipeSerializer<?> getSerializer() {
-    return FractureRecipeSerializer.INSTANCE;
+  public Identifier getId() {
+    return id;
   }
 
-  @Override
-  public RecipeType<?> getType() {
-    return Type.INSTANCE;
-  }
-
-  @Override
-  public boolean matches(FractureCraftingInventory inventory, World world) {
-    for (int i = 0; i < 9; i++)
-      for (int j = 0; j < 9; j++)
-        if (!getInput(j, i).test(inventory.getStack(i + j * 9)))
-          return false;
-    return true;
-  }
-
-  public static class Type implements RecipeType<FractureRecipe> {
-    private Type() {
-    }
-
-    public static final Type INSTANCE = new Type();
-    public static final String ID = "nine_nine_recipe";
+  public static FractureRecipe hasAvailable(Block[][] input) {
+    for (FractureRecipe recipe : INSTANCE)
+      if (recipe.matches(input))
+        return recipe;
+    return EMPTY;
   }
 }

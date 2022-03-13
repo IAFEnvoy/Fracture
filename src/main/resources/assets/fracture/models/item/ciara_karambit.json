@@ -1,7 +1,7 @@
 {
     "parent": "minecraft:item/handheld",
     "textures": {
-        "layer0": "fracture:fracture/ciara_boomerang"
+        "layer0": "fracture:fracture/ciara_karambit"
     },
     "display": {
         "thirdperson_righthand": {
