@@ -8,6 +8,9 @@
     "item.fracture.long_golden_sword": "Zombified Piglin King's long golden sword",
     "item.fracture.nether_princess_arm": "Nether Princess's arm",
     "item.fracture.wings": "Azura's wings",
+    "block.fracture.crafting_table": "Crafting Table",
 
-    "itemGroup.fracture.fracture": "Fracture·Arms"
+    "itemGroup.fracture.fracture": "Fracture·Arms",
+
+    "fracture.craft.fail": "Craft fail : Not a right block placement."
 }

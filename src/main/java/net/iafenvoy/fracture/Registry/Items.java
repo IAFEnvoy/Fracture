@@ -46,7 +46,7 @@ public class Items {
       new FractureCraftingTableBlock(
           FabricBlockSettings.of(Material.METAL).hardness(5.0f).breakByTool(FabricToolTags.PICKAXES, 3)));
   public static final Item CRAFTING_TABLE_ITEM = Registry.register(Registry.ITEM, "fracture:crafting_table",
-      new BlockItem(CRAFTING_TABLE, new Settings().fireproof().rarity(Rarity.EPIC)));
+      new BlockItem(CRAFTING_TABLE, new Settings().fireproof()));
 
   public static void Init() {
   }

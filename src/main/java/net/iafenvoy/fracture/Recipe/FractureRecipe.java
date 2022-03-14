@@ -3,6 +3,7 @@ package net.iafenvoy.fracture.Recipe;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.iafenvoy.fracture.Registry.Items;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
@@ -18,19 +19,17 @@ public class FractureRecipe {
     this.id = id;
     this.input = input;
     this.output = output;
-    INSTANCE.add(this);
+    if (id != null) {
+      this.input[4][4] = Items.CRAFTING_TABLE;
+      INSTANCE.add(this);
+    }
   }
 
   public boolean matches(Block[][] input) {
-    if (this == EMPTY)
-      return false;
     for (int i = 0; i < 9; i++)
-      for (int j = 0; j < 9; j++) {
-        if (i == 4 && j == 4)
-          continue;// middle block is not checked
+      for (int j = 0; j < 9; j++)
         if (input[i][j] != this.input[i][j])
           return false;
-      }
     return true;
   }
 

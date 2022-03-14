@@ -12,7 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-public class FractureRecipeSerializer{
+public class FractureRecipeSerializer {
   public static FractureRecipe read(Identifier id, JsonObject json) {
     try {
       Block[][] input = new Block[9][9];

@@ -1,25 +1,25 @@
 {
     "type": "fracture:nine_nine_recipe",
     "map": [
-        "         ",
-        "         ",
-        "         ",
-        "   ***   ",
-        "   *X*   ",
-        "   ***   ",
-        "         ",
-        "         ",
-        "         "
+        "*********",
+        "*   *   *",
+        "*   *   *",
+        "*  ***  *",
+        "****X****",
+        "*  ***  *",
+        "*   *   *",
+        "*   *   *",
+        "*********"
     ],
     "keys": [{
             "name": "*",
-            "item": "minecraft:stone"
+            "item": "minecraft:netherite_block"
         },
         {
             "name": "X",
             "item": "minecraft:diamond_block"
         }
     ],
-    "output": "minecraft:diamond_block",
+    "output": "minecraft:spawner",
     "count": 1
 }

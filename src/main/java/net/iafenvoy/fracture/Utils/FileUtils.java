@@ -10,7 +10,7 @@ public class FileUtils {
     BufferedReader in = new BufferedReader(stream);
     StringBuffer buffer = new StringBuffer();
     String line = "";
-    while ((line = in.readLine()) != null) 
+    while ((line = in.readLine()) != null)
       buffer.append(line).append("\n");
     String input = buffer.toString();
     return input;

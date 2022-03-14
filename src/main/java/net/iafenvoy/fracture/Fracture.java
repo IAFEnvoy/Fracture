@@ -9,18 +9,17 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Fracture implements ModInitializer {
-  public static Logger LOGGER = LogManager.getLogger();
+  public static final Logger LOGGER = LogManager.getLogger();
   public static final String MOD_ID = "fracture";
   public static final String MOD_NAME = "Fracture";
 
   @Override
   public void onInitialize() {
-    log(Level.INFO, "Initializing");
+    LOGGER.info("Initializing...");
     Items.Init();
     Networking.Init();
     ResourcesUtil.INSTANCE.loadAllRecipe();
@@ -28,6 +27,7 @@ public class Fracture implements ModInitializer {
 
   public static final ItemGroup _fracture = FabricItemGroupBuilder.create(new Identifier(MOD_ID, "fracture"))
       .icon(() -> new ItemStack(Items.ceris_big_knief)).appendItems(stacks -> {
+        stacks.add(new ItemStack(Items.CRAFTING_TABLE_ITEM));
         stacks.add(new ItemStack(Items.saber));
         stacks.add(new ItemStack(Items.patrick_halberd));
         stacks.add(new ItemStack(Items.dancer_arm));
@@ -37,8 +37,4 @@ public class Fracture implements ModInitializer {
         stacks.add(new ItemStack(Items.long_golden_sword));
         stacks.add(new ItemStack(Items.nether_princess_arm));
       }).build();
-
-  public static void log(Level level, String message) {
-    LOGGER.log(level, "[" + MOD_NAME + "] " + message);
-  }
 }
