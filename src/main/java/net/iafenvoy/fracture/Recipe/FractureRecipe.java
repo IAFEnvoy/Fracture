@@ -41,10 +41,25 @@ public class FractureRecipe {
     return id;
   }
 
+  public static Block[][] rotate(Block[][] input) {
+    Block[][] output = new Block[9][9];
+    for (int i = 0; i < 9; i++)
+      for (int j = 0; j < 9; j++)
+        output[i][j] = input[8 - j][i];
+    return output;
+  }
+
   public static FractureRecipe hasAvailable(Block[][] input) {
-    for (FractureRecipe recipe : INSTANCE)
+    for (FractureRecipe recipe : INSTANCE){
       if (recipe.matches(input))
         return recipe;
+      if(recipe.matches(rotate(input)))
+        return recipe;
+      if(recipe.matches(rotate(rotate(input))))
+        return recipe;
+      if(recipe.matches(rotate(rotate(rotate(input)))))
+        return recipe;
+      }
     return EMPTY;
   }
 }

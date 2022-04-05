@@ -1,0 +1,29 @@
+{
+    "type": "fracture:nine_nine_recipe",
+    "map": [
+        "       **",
+        "      ***",
+        "     *** ",
+        "    ***  ",
+        "   ***   ",
+        "  ***    ",
+        "  0*     ",
+        " #       ",
+        "#        "
+    ],
+    "keys": [{
+            "name": "*",
+            "item": "minecraft:obsidian"
+        },
+        {
+            "name": "0",
+            "item": "minecraft:diamond_block"
+        },
+        {
+            "name": "#",
+            "item": "minecraft:netherite_block"
+        }
+    ],
+    "output": "fracture:ceris_big_knief",
+    "count": 1
+}
