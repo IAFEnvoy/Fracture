@@ -2,6 +2,7 @@ package net.iafenvoy.fracture;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.iafenvoy.fracture.Registry.Cape;
 import net.iafenvoy.fracture.Registry.Items;
 import net.iafenvoy.fracture.Registry.Networking;
 import net.iafenvoy.fracture.Utils.ResourcesUtil;
@@ -21,6 +22,7 @@ public class Fracture implements ModInitializer {
   public void onInitialize() {
     LOGGER.info("Initializing...");
     Items.Init();
+    Cape.Init();
     Networking.Init();
     ResourcesUtil.INSTANCE.loadAllRecipe();
   }
@@ -38,5 +40,10 @@ public class Fracture implements ModInitializer {
         stacks.add(new ItemStack(Items.ruby_pike));
         stacks.add(new ItemStack(Items.tech_wing));
         stacks.add(new ItemStack(Items.dragon_wing));
+
+        stacks.add(new ItemStack(Cape.human));
+        stacks.add(new ItemStack(Cape.nether));
+        stacks.add(new ItemStack(Cape.undead));
+        stacks.add(new ItemStack(Cape.end));
       }).build();
 }

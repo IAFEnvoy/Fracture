@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class FileUtils {
-
   public static String readByLines(InputStreamReader stream) throws IOException {
     BufferedReader in = new BufferedReader(stream);
     StringBuffer buffer = new StringBuffer();

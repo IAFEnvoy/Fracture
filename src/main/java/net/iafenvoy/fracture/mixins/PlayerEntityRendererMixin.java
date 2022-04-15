@@ -5,6 +5,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import net.iafenvoy.fracture.Items.Capes.CapeRender;
 import net.iafenvoy.fracture.Items.Wings.WingsFeatureRenderer;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
@@ -22,6 +23,7 @@ public abstract class PlayerEntityRendererMixin
 
   @Inject(method = "<init>(Lnet/minecraft/client/render/entity/EntityRenderDispatcher;Z)V", at = @At(value = "INVOKE", shift = At.Shift.AFTER, target = "net/minecraft/client/render/entity/PlayerEntityRenderer.addFeature(Lnet/minecraft/client/render/entity/feature/FeatureRenderer;)Z", ordinal = 6))
   public void postConstructor(CallbackInfo callbackInfo) {
+    this.addFeature(new CapeRender<>(this));
     this.addFeature(new WingsFeatureRenderer<>(this));
   }
 }
