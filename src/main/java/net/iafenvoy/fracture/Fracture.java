@@ -26,15 +26,17 @@ public class Fracture implements ModInitializer {
   }
 
   public static final ItemGroup _fracture = FabricItemGroupBuilder.create(new Identifier(MOD_ID, "fracture"))
-      .icon(() -> new ItemStack(Items.ceris_big_knief)).appendItems(stacks -> {
+      .icon(() -> new ItemStack(Items.end_greatsword)).appendItems(stacks -> {
         stacks.add(new ItemStack(Items.CRAFTING_TABLE_ITEM));
-        stacks.add(new ItemStack(Items.saber));
-        stacks.add(new ItemStack(Items.patrick_halberd));
-        stacks.add(new ItemStack(Items.dancer_arm));
-        stacks.add(new ItemStack(Items.ceris_big_knief));
-        stacks.add(new ItemStack(Items.ciara_karambit));
-        stacks.add(new ItemStack(Items.blackbone_arm));
-        stacks.add(new ItemStack(Items.long_golden_sword));
-        stacks.add(new ItemStack(Items.nether_princess_arm));
+        stacks.add(new ItemStack(Items.end_laser_arm_sword));
+        stacks.add(new ItemStack(Items.ser_patricks_pike));
+        stacks.add(new ItemStack(Items.end_greatsword));
+        stacks.add(new ItemStack(Items.end_karambit));
+        stacks.add(new ItemStack(Items.end_handled_greatsword));
+        stacks.add(new ItemStack(Items.nether_greatsword));
+        stacks.add(new ItemStack(Items.golden_longsword));
+        stacks.add(new ItemStack(Items.ruby_pike));
+        stacks.add(new ItemStack(Items.tech_wing));
+        stacks.add(new ItemStack(Items.dragon_wing));
       }).build();
 }

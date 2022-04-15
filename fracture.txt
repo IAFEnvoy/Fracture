@@ -3,3 +3,12 @@
 2. Ceris的长剑、激光剑、艾比盖尔的长枪增加斩首特效
 3.西亚拉的匕首增加抛掷功能，抛掷落地回无伤传送，同时伤害提高到8。
 4.增加触及范围设定
+
+1. End laser arm sword
+2. Ser Patrick's pike
+3. End 1 handled Greatsword
+4. End Greatsword
+5. End Karambit
+6. Nether Greatsword
+7. Golden Longsword
+8. Ruby Pike (Nether Ruby pike)

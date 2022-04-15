@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "fracture:wing/wing"
+        "layer0": "fracture:wing/dragon_wing_item"
     }
 }

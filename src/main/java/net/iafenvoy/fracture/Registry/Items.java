@@ -25,21 +25,26 @@ public class Items {
       new FabricItemSettings().maxDamage(432).rarity(Rarity.UNCOMMON).equipmentSlot((stack) -> {
         return EquipmentSlot.CHEST;
       }));
-  public static final ToolItem saber = new WeaponItems("saber", FractureMaterial.INSTANCE, 30, 10,
+  public static final ElytraItem dragon_wing = new WingItems("dragon_wing",
+      new FabricItemSettings().maxDamage(432).rarity(Rarity.UNCOMMON).equipmentSlot((stack) -> {
+        return EquipmentSlot.CHEST;
+      }));
+
+  public static final ToolItem end_laser_arm_sword = new WeaponItems("end_laser_arm_sword", FractureMaterial.INSTANCE,
+      30, 10, new Settings().rarity(Rarity.RARE), Teams.END);
+  public static final ToolItem ser_patricks_pike = new WeaponItems("ser_patricks_pike", FractureMaterial.INSTANCE, 25,
+      3, new Settings().rarity(Rarity.RARE), Teams.HUMAN);
+  public static final ToolItem end_handled_greatsword = new WeaponItems("end_handled_greatsword",
+      FractureMaterial.INSTANCE, 27, 4, new Settings().rarity(Rarity.RARE), Teams.END);
+  public static final ToolItem end_greatsword = new WeaponItems("end_greatsword", FractureMaterial.INSTANCE, 10, 6,
       new Settings().rarity(Rarity.RARE), Teams.END);
-  public static final ToolItem patrick_halberd = new WeaponItems("patrick_halberd", FractureMaterial.INSTANCE, 25, 3,
-      new Settings().rarity(Rarity.RARE), Teams.HUMAN);
-  public static final ToolItem dancer_arm = new WeaponItems("dancer_arm", FractureMaterial.INSTANCE, 27, 4,
-      new Settings().rarity(Rarity.RARE), Teams.END);
-  public static final ToolItem ceris_big_knief = new WeaponItems("ceris_big_knief", FractureMaterial.INSTANCE, 10, 6,
-      new Settings().rarity(Rarity.RARE), Teams.END);
-  public static final ToolItem blackbone_arm = new WeaponItems("blackbone_arm", FractureMaterial.INSTANCE, 10, 2,
-      new Settings().rarity(Rarity.RARE), Teams.NETHER);
-  public static final ToolItem long_golden_sword = new WeaponItems("long_golden_sword", FractureMaterial.INSTANCE, 10,
+  public static final ToolItem nether_greatsword = new WeaponItems("nether_greatsword", FractureMaterial.INSTANCE, 10,
       2, new Settings().rarity(Rarity.RARE), Teams.NETHER);
-  public static final ToolItem nether_princess_arm = new WeaponItems("nether_princess_arm", FractureMaterial.INSTANCE,
+  public static final ToolItem golden_longsword = new WeaponItems("golden_longsword", FractureMaterial.INSTANCE, 10,
+      2, new Settings().rarity(Rarity.RARE), Teams.NETHER);
+  public static final ToolItem ruby_pike = new WeaponItems("ruby_pike", FractureMaterial.INSTANCE,
       10, 2, new Settings().rarity(Rarity.RARE), Teams.NETHER);
-  public static final ToolItem ciara_karambit = new KarambitItem("ciara_karambit", FractureMaterial.INSTANCE, 6,
+  public static final ToolItem end_karambit = new KarambitItem("end_karambit", FractureMaterial.INSTANCE, 6,
       2, new Settings().rarity(Rarity.RARE), Teams.HUMAN);
 
   public static final Block CRAFTING_TABLE = Registry.register(Registry.BLOCK, "fracture:crafting_table",
