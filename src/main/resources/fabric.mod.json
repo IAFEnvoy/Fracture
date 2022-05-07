@@ -4,7 +4,7 @@
     "version": "1.0.0",
 
     "name": "Fracture",
-    "description": "Add arms in Fracture (Rainimator's videos) to Minecraft.\nAdd mod \"Elemental World\" to use them in survival.",
+    "description": "Add arms in Fracture (Rainimator's videos) to Minecraft.",
     "authors": [
         "IAFEnvoy"
     ],
@@ -18,7 +18,7 @@
     "environment": "*",
     "entrypoints": {
         "main": [
-            "net.iafenvoy.fracture.Fracture"
+            "iafenvoy.fracture.Fracture"
         ]
     },
     "mixins": [

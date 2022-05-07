@@ -16,4 +16,10 @@ public enum Teams {
         return this.translateKey;
     }
 
+    public static Teams getByName(String name){
+      for(Teams t : Teams.values())
+        if(t.translateKey.equals(name))
+          return t;
+      return Teams.NONE;
+    }
 }
