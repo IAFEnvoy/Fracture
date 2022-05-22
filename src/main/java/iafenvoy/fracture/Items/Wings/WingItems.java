@@ -1,21 +1,28 @@
 package iafenvoy.fracture.Items.Wings;
 
+import java.util.List;
 import java.util.UUID;
 
 import com.google.common.collect.ImmutableMultimap;
 
 import iafenvoy.fracture.Fracture;
+import iafenvoy.fracture.Utils.Enum.Teams;
 import net.fabricmc.fabric.api.tag.TagRegistry;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ElytraItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tag.Tag;
+import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.World;
 import top.theillusivec4.caelus.api.CaelusApi;
 
 public class WingItems extends ElytraItem {
@@ -24,12 +31,9 @@ public class WingItems extends ElytraItem {
   private String name;
   private double speed;
   private double acceleration;
+  private final Teams team;
 
-  /**
-   * The default constructor. It sets {@link WingItem#speed} and
-   * {@link WingItem#acceleration} to 0.05D.
-   */
-  public WingItems(String name, Settings settings) {
+  public WingItems(String name, Settings settings, Teams team) {
     super(settings);
     this.builder.put(CaelusApi.ELYTRA_FLIGHT,
         new EntityAttributeModifier(UUID.fromString("7d9704a0-383f-11eb-adc1-0242ac120002"), "Flight", 1,
@@ -37,17 +41,7 @@ public class WingItems extends ElytraItem {
     this.speed = WingConfig.wingsSpeed;
     this.acceleration = WingConfig.wingsAcceleration;
     this.name = name;
-    Registry.register(Registry.ITEM, new Identifier(Fracture.MOD_ID, name), this);
-  }
-
-  public WingItems(String name) {
-    super(new Item.Settings().group(Fracture._fracture).maxCount(1).maxDamage(WingConfig.wingsDurability));
-    this.builder.put(CaelusApi.ELYTRA_FLIGHT,
-        new EntityAttributeModifier(UUID.fromString("7d9704a0-383f-11eb-adc1-0242ac120002"), "Flight", 1,
-            EntityAttributeModifier.Operation.ADDITION));
-    this.speed = WingConfig.wingsSpeed;
-    this.acceleration = WingConfig.wingsAcceleration;
-    this.name = name;
+    this.team = team;
     Registry.register(Registry.ITEM, new Identifier(Fracture.MOD_ID, name), this);
   }
 
@@ -73,5 +67,11 @@ public class WingItems extends ElytraItem {
 
     if (!FREE_FLIGHT.contains(this) && !player.isCreative())
       DeleteHungerMessage.send();
+  }
+
+  @Override
+  public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
+    super.appendTooltip(stack, world, tooltip, context);
+    tooltip.add(new TranslatableText("fracture.team." + team.getTranslateKey() + ".tooltip"));
   }
 }

@@ -24,11 +24,11 @@ public class Items {
   public static final ElytraItem tech_wing = new WingItems("tech_wing",
       new FabricItemSettings().maxDamage(432).rarity(Rarity.UNCOMMON).equipmentSlot((stack) -> {
         return EquipmentSlot.CHEST;
-      }));
+      }),Teams.HUMAN);
   public static final ElytraItem dragon_wing = new WingItems("dragon_wing",
       new FabricItemSettings().maxDamage(432).rarity(Rarity.UNCOMMON).equipmentSlot((stack) -> {
         return EquipmentSlot.CHEST;
-      }));
+      }),Teams.END);
 
   public static final ToolItem end_laser_arm_sword = new WeaponItems("end_laser_arm_sword", FractureMaterial.INSTANCE,
       30, 10, new Settings().rarity(Rarity.RARE), Teams.END);

@@ -14,5 +14,10 @@
 
     "itemGroup.fracture.fracture": "Fracture·Arms",
 
-    "fracture.craft.fail": "Craft fail : Not a right block placement."
+    "fracture.craft.fail": "Craft fail : Not a right block placement.",
+
+    "fracture.team.human.tooltip":"Team : Human",
+    "fracture.team.nether.tooltip":"Team : Nether",
+    "fracture.team.end.tooltip":"Team : End",
+    "fracture.team.undead.tooltip":"Team : undead"
 }

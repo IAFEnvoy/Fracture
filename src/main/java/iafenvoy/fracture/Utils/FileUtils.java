@@ -33,6 +33,9 @@ public class FileUtils {
   }
 
   public static void saveFile(String path, String content) throws IOException {
+    File configFolder = new File("./config/fracture");
+    if (!configFolder.exists())
+      configFolder.mkdir();
     OutputStream outputStream = new FileOutputStream(new File(path));
     BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream));
     bufferedWriter.write(content);

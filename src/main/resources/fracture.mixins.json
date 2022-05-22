@@ -6,9 +6,12 @@
   "client": [
     "PlayerEntityRendererMixin"
   ],
-  "server": [
-    "CommandsMixin"
+  "mixins": [
+    "CommandsMixin",
+    "MinecraftServerMixin",
+    "ScoreboardMixin"
   ],
+  "server": [],
   "injectors": {
     "defaultRequire": 1
   }
