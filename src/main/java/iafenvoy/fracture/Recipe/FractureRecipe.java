@@ -1,9 +1,8 @@
 package iafenvoy.fracture.Recipe;
 
+import iafenvoy.fracture.Registry.Items;
 import java.util.ArrayList;
 import java.util.List;
-
-import iafenvoy.fracture.Registry.Items;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;

@@ -48,7 +48,7 @@ public class CapeItem extends Item {
 
   @Override
   public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
-      super.appendTooltip(stack, world, tooltip, context);
-      tooltip.add(new TranslatableText("fracture.team." + team.getTranslateKey() + ".tooltip"));
+    super.appendTooltip(stack, world, tooltip, context);
+    tooltip.add(new TranslatableText("fracture.team." + team.getTranslateKey() + ".tooltip"));
   }
 }

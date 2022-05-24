@@ -1,11 +1,9 @@
 package iafenvoy.fracture.Recipe;
 
-import java.util.HashMap;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-
+import java.util.HashMap;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;

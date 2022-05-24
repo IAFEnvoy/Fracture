@@ -1,15 +1,14 @@
 package iafenvoy.fracture.mixins;
 
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
 import iafenvoy.fracture.Config.ConfigLoader;
 import iafenvoy.fracture.Config.PlayerProfile;
 import iafenvoy.fracture.Utils.CommandUtil;
 import iafenvoy.fracture.Utils.Enum.Teams;
 import net.minecraft.server.MinecraftServer;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(MinecraftServer.class)
 public class MinecraftServerMixin {

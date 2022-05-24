@@ -1,15 +1,13 @@
 package iafenvoy.fracture.Config;
 
-import java.util.HashMap;
-import java.util.Map.Entry;
-
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
 import iafenvoy.fracture.Utils.FileUtils;
 import iafenvoy.fracture.Utils.LogUtil;
 import iafenvoy.fracture.Utils.Enum.Teams;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 public class PlayerProfile {
   public static final HashMap<String, PlayerProfile> profiles = new HashMap<String, PlayerProfile>();

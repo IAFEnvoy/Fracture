@@ -46,10 +46,10 @@ public class CapeRender<T extends LivingEntity, M extends EntityModel<T>> extend
       else
         matrixStack.translate(0.0D, 0.0D, 0.125D);
       // else if (livingEntity.isInSneakingPose())
-      //   matrixStack.translate(0.0D, 0.1D, 0.125D);
+      // matrixStack.translate(0.0D, 0.1D, 0.125D);
       // else
-      //   matrixStack.translate(0.0D, 0.0D, 0.225D);
-      
+      // matrixStack.translate(0.0D, 0.0D, 0.225D);
+
       final double d = MathHelper.lerp(h, player.prevCapeX, player.capeX)
           - MathHelper.lerp(h, player.prevX, player.getX());
       final double e = MathHelper.lerp(h, player.prevCapeY, player.capeY)

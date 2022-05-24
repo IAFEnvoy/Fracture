@@ -1,12 +1,10 @@
 package iafenvoy.fracture.Items.Wings;
 
-import java.util.List;
-import java.util.UUID;
-
 import com.google.common.collect.ImmutableMultimap;
-
 import iafenvoy.fracture.Fracture;
 import iafenvoy.fracture.Utils.Enum.Teams;
+import java.util.List;
+import java.util.UUID;
 import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.attribute.EntityAttribute;

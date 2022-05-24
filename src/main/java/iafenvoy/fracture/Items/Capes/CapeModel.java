@@ -1,7 +1,6 @@
 package iafenvoy.fracture.Items.Capes;
 
 import com.google.common.collect.ImmutableList;
-
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.entity.model.AnimalModel;
 import net.minecraft.entity.LivingEntity;
@@ -11,7 +10,7 @@ public class CapeModel<T extends LivingEntity> extends AnimalModel<T> {
 
   public CapeModel() {
     textureWidth = 64;
-    textureHeight =56;
+    textureHeight = 56;
 
     this.cloak = new ModelPart(this);
     this.cloak.setTextureSize(64, 56);

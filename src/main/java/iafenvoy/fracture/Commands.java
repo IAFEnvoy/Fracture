@@ -2,7 +2,6 @@ package iafenvoy.fracture;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-
 import iafenvoy.fracture.Config.PlayerProfile;
 import iafenvoy.fracture.Utils.CommandUtil;
 import iafenvoy.fracture.Utils.Enum.Teams;
