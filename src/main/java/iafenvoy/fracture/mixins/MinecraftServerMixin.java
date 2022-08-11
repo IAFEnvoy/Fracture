@@ -12,17 +12,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(MinecraftServer.class)
 public class MinecraftServerMixin {
-  @Inject(method = "runServer", at = @At("HEAD"))
-  private void onServerStart(CallbackInfo ci) {
-    ConfigLoader.loadConfig();
-    PlayerProfile.loadProfile();
-    CommandUtil.server = (MinecraftServer) (Object) this;
-    Teams.initTeam();
-  }
+    @Inject(method = "runServer", at = @At("HEAD"))
+    private void onServerStart(CallbackInfo ci) {
+        ConfigLoader.loadConfig();
+        PlayerProfile.loadProfile();
+        CommandUtil.server = (MinecraftServer) (Object) this;
+        Teams.initTeam();
+    }
 
-  @Inject(method = "shutdown", at = @At("HEAD"))
-  private void onServerShutdown(CallbackInfo ci) {
-    ConfigLoader.saveConfig();
-    PlayerProfile.saveProfile();
-  }
+    @Inject(method = "shutdown", at = @At("HEAD"))
+    private void onServerShutdown(CallbackInfo ci) {
+        ConfigLoader.saveConfig();
+        PlayerProfile.saveProfile();
+    }
 }

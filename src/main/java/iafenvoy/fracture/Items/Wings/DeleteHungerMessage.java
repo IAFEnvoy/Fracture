@@ -11,19 +11,16 @@ import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
-public class DeleteHungerMessage implements PlayChannelHandler
-{
-	public static final Identifier ID = new Identifier(Fracture.MOD_ID, "delete_hunger");
+public class DeleteHungerMessage implements PlayChannelHandler {
+    public static final Identifier ID = new Identifier(Fracture.MOD_ID, "delete_hunger");
 
-	public static void send()
-	{
-		PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
-		ClientPlayNetworking.send(ID, buf);
-	}
+    public static void send() {
+        PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
+        ClientPlayNetworking.send(ID, buf);
+    }
 
-	@Override
-	public void receive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler,
-			PacketByteBuf buf, PacketSender responseSender) {
-		player.addExhaustion(WingConfig.exhaustionAmount);
-	}
+    @Override
+    public void receive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
+        player.addExhaustion(WingConfig.exhaustionAmount);
+    }
 }

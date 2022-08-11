@@ -13,16 +13,14 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(PlayerEntityRenderer.class)
-public abstract class PlayerEntityRendererMixin
-    extends LivingEntityRenderer<AbstractClientPlayerEntity, PlayerEntityModel<AbstractClientPlayerEntity>> {
-  public PlayerEntityRendererMixin(EntityRenderDispatcher dispatcher,
-      PlayerEntityModel<AbstractClientPlayerEntity> model, float shadowRadius) {
-    super(dispatcher, model, shadowRadius);
-  }
+public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer<AbstractClientPlayerEntity, PlayerEntityModel<AbstractClientPlayerEntity>> {
+    public PlayerEntityRendererMixin(EntityRenderDispatcher dispatcher, PlayerEntityModel<AbstractClientPlayerEntity> model, float shadowRadius) {
+        super(dispatcher, model, shadowRadius);
+    }
 
-  @Inject(method = "<init>(Lnet/minecraft/client/render/entity/EntityRenderDispatcher;Z)V", at = @At(value = "INVOKE", shift = At.Shift.AFTER, target = "net/minecraft/client/render/entity/PlayerEntityRenderer.addFeature(Lnet/minecraft/client/render/entity/feature/FeatureRenderer;)Z", ordinal = 6))
-  public void postConstructor(CallbackInfo callbackInfo) {
-    this.addFeature(new CapeRender<>(this));
-    this.addFeature(new WingsFeatureRenderer<>(this));
-  }
+    @Inject(method = "<init>(Lnet/minecraft/client/render/entity/EntityRenderDispatcher;Z)V", at = @At(value = "INVOKE", shift = At.Shift.AFTER, target = "net/minecraft/client/render/entity/PlayerEntityRenderer.addFeature(Lnet/minecraft/client/render/entity/feature/FeatureRenderer;)Z", ordinal = 6))
+    public void postConstructor(CallbackInfo callbackInfo) {
+        this.addFeature(new CapeRender<>(this));
+        this.addFeature(new WingsFeatureRenderer<>(this));
+    }
 }

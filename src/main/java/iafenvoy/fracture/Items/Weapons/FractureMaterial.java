@@ -5,66 +5,66 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 
 public class FractureMaterial implements ToolMaterial {
-  public static final FractureMaterial INSTANCE = new FractureMaterial(0, 2000, 30, ItemStack.EMPTY);
-  private float attackDamage;
-  private int durability;
-  private int enchantability;
-  private Ingredient repairIngredient;
+    public static final FractureMaterial INSTANCE = new FractureMaterial(0, 2000, 30, ItemStack.EMPTY);
+    private float attackDamage;
+    private int durability;
+    private int enchantability;
+    private Ingredient repairIngredient;
 
-  public FractureMaterial(float attackDamage, int durability, int enchantability, ItemStack repairItem) {
-    this.attackDamage = attackDamage;
-    this.durability = durability;
-    this.enchantability = enchantability;
-    this.repairIngredient = Ingredient.ofStacks(repairItem);
-  }
+    public FractureMaterial(float attackDamage, int durability, int enchantability, ItemStack repairItem) {
+        this.attackDamage = attackDamage;
+        this.durability = durability;
+        this.enchantability = enchantability;
+        this.repairIngredient = Ingredient.ofStacks(repairItem);
+    }
 
-  public FractureMaterial setAttackDamage(float attackDamage) {
-    this.attackDamage = attackDamage;
-    return this;
-  }
+    @Override
+    public float getMiningSpeedMultiplier() {
+        return 1.0F;
+    }
 
-  public FractureMaterial setDurability(int durability) {
-    this.durability = durability;
-    return this;
-  }
+    @Override
+    public int getMiningLevel() {
+        return 1;
+    }
 
-  public FractureMaterial setEnchantability(int enchantability) {
-    this.enchantability = enchantability;
-    return this;
-  }
+    @Override
+    public int getEnchantability() {
+        return enchantability;
+    }
 
-  public FractureMaterial setRepairIngredient(ItemStack repairItem) {
-    this.repairIngredient = Ingredient.ofStacks(repairItem);
-    return this;
-  }
+    public FractureMaterial setEnchantability(int enchantability) {
+        this.enchantability = enchantability;
+        return this;
+    }
 
-  @Override
-  public float getMiningSpeedMultiplier() {
-    return 1.0F;
-  }
+    @Override
+    public float getAttackDamage() {
+        return attackDamage;
+    }
 
-  @Override
-  public int getMiningLevel() {
-    return 1;
-  }
+    public FractureMaterial setAttackDamage(float attackDamage) {
+        this.attackDamage = attackDamage;
+        return this;
+    }
 
-  @Override
-  public int getEnchantability() {
-    return enchantability;
-  }
+    @Override
+    public int getDurability() {
+        return durability;
+    }
 
-  @Override
-  public float getAttackDamage() {
-    return attackDamage;
-  }
+    public FractureMaterial setDurability(int durability) {
+        this.durability = durability;
+        return this;
+    }
 
-  @Override
-  public int getDurability() {
-    return durability;
-  }
+    @Override
+    public Ingredient getRepairIngredient() {
+        return repairIngredient;
+    }
 
-  @Override
-  public Ingredient getRepairIngredient() {
-    return repairIngredient;
-  }
+    public FractureMaterial setRepairIngredient(ItemStack repairItem) {
+        this.repairIngredient = Ingredient.ofStacks(repairItem);
+        return this;
+    }
 }

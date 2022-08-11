@@ -10,7 +10,7 @@ public class WingConfig {
     public static float rollAmount = 1.0F;
 
     public WingConfig(boolean armourSlows, float maxSlowedMultiplier, float wingsSpeed, int wingsDurability,
-            float wingsAcceleration, float exhaustionAmount, float rollAmount) {
+                      float wingsAcceleration, float exhaustionAmount, float rollAmount) {
         WingConfig.armourSlows = armourSlows;
         WingConfig.maxSlowedMultiplier = maxSlowedMultiplier;
         WingConfig.wingsSpeed = wingsSpeed;
@@ -19,7 +19,8 @@ public class WingConfig {
         WingConfig.exhaustionAmount = exhaustionAmount;
         WingConfig.rollAmount = rollAmount;
     }
-    public WingConfig(){
+
+    public WingConfig() {
 
     }
 }

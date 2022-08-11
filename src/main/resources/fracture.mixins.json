@@ -7,7 +7,6 @@
     "PlayerEntityRendererMixin"
   ],
   "mixins": [
-    "CommandsMixin",
     "MinecraftServerMixin",
     "ScoreboardMixin"
   ],

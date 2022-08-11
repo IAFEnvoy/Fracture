@@ -1,37 +1,30 @@
 {
-    "schemaVersion": 1,
-    "id": "fracture",
-    "version": "1.0.0",
-
-    "name": "Fracture",
-    "description": "Add arms in Fracture (Rainimator's videos) to Minecraft.",
-    "authors": [
-        "IAFEnvoy"
-    ],
-    "contact": {
-        "sources": "https://github.com/IAFEnvoy/Fracture"
-    },
-
-    "license": "Mozilla",
-    "icon": "assets/fracture/icon.png",
-
-    "environment": "*",
-    "entrypoints": {
-        "main": [
-            "iafenvoy.fracture.Fracture"
-        ]
-    },
-    "mixins": [
-        "fracture.mixins.json"
-    ],
-
-    "depends": {
-        "fabricloader": ">=0.11.3",
-        "fabric": "*",
-        "minecraft": "1.16.x",
-        "java": ">=8"
-    },
-    "suggests": {
-        "another-mod": "*"
-    }
+  "schemaVersion": 1,
+  "id": "fracture",
+  "version": "1.0.0",
+  "name": "Fracture",
+  "description": "Add arms in Fracture (Rainimator's videos) to Minecraft.",
+  "authors": [
+    "IAFEnvoy"
+  ],
+  "contact": {
+    "sources": "https://github.com/IAFEnvoy/Fracture"
+  },
+  "license": "GPL-3.0",
+  "icon": "assets/fracture/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "iafenvoy.fracture.Fracture"
+    ]
+  },
+  "mixins": [
+    "fracture.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.16.x",
+    "java": ">=8"
+  }
 }
